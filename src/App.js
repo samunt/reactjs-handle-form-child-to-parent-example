@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import AgeTeller from './AgeTeller';
+import moment from 'moment'
 import './App.css';
 
 class App extends Component {
@@ -9,8 +10,9 @@ class App extends Component {
         this.handleClick = this.handleClick.bind(this)
     }
     handleClick(e) {
-        e.preventDefault()
         console.log('eventInParent', e.target.value)
+        let years = moment().diff(e.target.value, 'years');
+        console.log('YEARS OLD', years)
     };
     render() {
         return (
