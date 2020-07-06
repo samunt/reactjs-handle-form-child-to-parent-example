@@ -3,15 +3,15 @@ class AgeTeller extends Component {
     constructor(props) {
         super(props);
         this.handleClick = this.handleClick.bind(this)
+        this.handleSubmit = this.handleSubmit.bind(this)
         this.state = {value: ''}
     }
     handleClick(e) {
-        console.log('eventInChild', e.target.value)
-        console.log('PROPS IN CHILD==> need clickme function',this.props)
-        this.props.clickMe(e)
+        this.setState({value: e.target.value})
     }
     handleSubmit(e) {
         e.preventDefault()
+        this.props.clickMe(this.state.value)
     }
     render() {
         return (

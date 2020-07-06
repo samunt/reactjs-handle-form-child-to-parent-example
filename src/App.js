@@ -9,15 +9,22 @@ class App extends Component {
         this.state = {age: ''}
         this.handleClick = this.handleClick.bind(this)
     }
-    handleClick(e) {
-        console.log('eventInParent', e.target.value)
-        let years = moment().diff(e.target.value, 'years');
-        console.log('YEARS OLD', years)
+    handleClick(val) {
+        let years = moment().diff(val, 'years');
+        this.setState({age: years})
     };
     render() {
+        const checkAge = ()=>{
+            if(this.state.age > 1){
+                return <h1>Age is {this.state.age}</h1>
+            } else{
+                return <h1>Age is not yet defined</h1>
+            }
+        }
         return (
             <div className="App">
                 <AgeTeller clickMe={this.handleClick}/>
+                {checkAge()}
             </div>
         );
     }
